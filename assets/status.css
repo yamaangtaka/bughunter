@@ -1,0 +1,190 @@
+/**
+ * Estado comercial: contador, happy hour, patrocinio y bifurcación.
+ *
+ * Archivo aparte, no añadido a admin.css, por dos razones concretas: admin.css
+ * ya son 2.853 líneas —por encima del límite de 2.000 del proyecto— y su orden
+ * de cascada es intencional, con reglas que dependen de ir al final y un
+ * comentario que lo dice. Añadir al final de ese archivo es justo la clase de
+ * cambio que mueve un breakpoint sin que nadie lo note.
+ *
+ * Reutiliza .abh-luz, que ya existe en dashboard.css con sus dos estados.
+ */
+
+.abh-estado {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 18px;
+	margin: 12px 0 4px;
+	padding: 10px 14px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-left: 3px solid #2271b1;
+	border-radius: 4px;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+.abh-estado--offline {
+	border-left-color: #b32d2e;
+	color: #50575e;
+}
+
+.abh-estado-texto {
+	flex: 1 1 260px;
+	min-width: 0;
+}
+
+.abh-estado-happy {
+	font-weight: 600;
+	color: #14532d;
+}
+
+.abh-estado-dato {
+	white-space: nowrap;
+	color: #3c434a;
+}
+
+.abh-estado-dato strong {
+	font-size: 15px;
+	font-weight: 700;
+	margin-right: 3px;
+}
+
+/* La bolsa se acabó: el aviso ocupa la línea entera porque es una frase, no una
+   cifra, y partirla en dos columnas la vuelve ilegible. */
+.abh-estado-dato--agotado {
+	white-space: normal;
+	flex: 1 1 100%;
+	color: #8a2f27;
+}
+
+.abh-estado-dato--tenue {
+	color: #787c82;
+}
+
+/* ---- patrocinio del primer mes ---- */
+
+.abh-patrocinio {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px 18px;
+	margin: 0 0 14px;
+	padding: 12px 16px;
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.abh-patrocinio-texto {
+	margin: 0;
+	flex: 1 1 320px;
+	color: #3c434a;
+	font-size: 13.5px;
+}
+
+.abh-patrocinio-accion {
+	margin: 0;
+	flex: 0 0 auto;
+}
+
+/* ---- diálogo de bifurcación ---- */
+
+.abh-fork {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 160000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	background: rgba(15, 18, 22, 0.55);
+}
+
+.abh-fork[hidden] {
+	display: none;
+}
+
+.abh-fork-caja {
+	width: 100%;
+	max-width: 480px;
+	background: #fff;
+	border-radius: 8px;
+	padding: 24px 26px 20px;
+	box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+}
+
+.abh-fork-titulo {
+	margin: 0 0 8px;
+	font-size: 19px;
+	line-height: 1.25;
+}
+
+.abh-fork-explica {
+	margin: 0 0 18px;
+	color: #50575e;
+	font-size: 13.5px;
+	line-height: 1.6;
+}
+
+.abh-fork-opciones {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+/* En columna y no en fila: los dos botones llevan precio, y en fila el texto se
+   parte por la mitad justo en la pantalla donde alguien decide gastar. */
+.abh-fork-opciones .button {
+	width: 100%;
+	justify-content: center;
+	text-align: center;
+	height: auto;
+	min-height: 38px;
+	padding: 8px 14px;
+	white-space: normal;
+	line-height: 1.4;
+}
+
+.abh-fork-pie {
+	margin: 16px 0 0;
+	text-align: center;
+}
+
+.abh-fork-pie .button-link {
+	color: #787c82;
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 782px) {
+	.abh-estado {
+		gap: 6px 12px;
+	}
+
+	.abh-estado-dato {
+		white-space: normal;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.abh-fork-caja {
+		animation: abh-fork-in 140ms ease-out;
+	}
+}
+
+@keyframes abh-fork-in {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
