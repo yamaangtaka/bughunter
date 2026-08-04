@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       AI Bug Hunter
- * Plugin URI:        https://aibughunter.com
+ * Plugin URI:        https://bughunter.digital
  * Description:       Analyze PHP errors with optional AI, review proposed diffs, and follow manual repair guidance. This edition never applies externally generated code.
  * Version:           1.0
  * Requires at least: 6.3.5
